@@ -13,19 +13,21 @@ class ViewController: UIViewController {
     @IBOutlet var blightnessLabel: UILabel!
     var blightness: Float = 0.0
     
-    @IBOutlet var thresholdSlider: UISlider!
     @IBOutlet var thresholdLabel: UILabel!
-    var threshold: Float = 0.0
+    var threshold: Float = 0.1
     
     var audio: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // スライダーの設定（最小値：0.1、最大値：0.9、初期値：0.1）
-        thresholdSlider.minimumValue = 0.1;
-        thresholdSlider.maximumValue = 0.9;
-        thresholdSlider.value = 0.1;
         
+        // 表示用のテキスト
+        blightnessLabel.text = String(format: "%.1f", blightness)
+        thresholdLabel.text = String(format: "%.1f", threshold)
+        
+        // ”Cross The Line”って曲が端末に存在しないとエラーで落ちます
+        // 好きな曲名に変更してください
+        // TODO:予定では設定画面で選択した曲が流れます
         let item: MPMediaItem = getMediaItemBySongFreeword("Cross The Line")
         let url: NSURL = item.valueForProperty(MPMediaItemPropertyAssetURL) as! NSURL
         
@@ -52,46 +54,46 @@ class ViewController: UIViewController {
                                                          name: UIScreenBrightnessDidChangeNotification,
                                                          object: nil)
         
-        threshold = thresholdSlider.value
-        thresholdLabel.text = String(format: "%.1f", threshold)
-        
-        thresholdSlider.addTarget(self, action: #selector(thresholdSliderValueDidChange(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        
+        // threshold = thresholdSlider.value
+        // thresholdLabel.text = String(format: "%.1f", threshold)
+        //
+        // thresholdSlider.addTarget(self, action: #selector(thresholdSliderValueDidChange(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        //
         checkThreshold()
     }
-    
+
     internal func brightnessDidChange(notification: NSNotification) {
         blightness = Float(UIScreen.mainScreen().brightness)
         blightnessLabel.text = String(format: "%.1f", blightness)
         checkThreshold()
     }
     
-    internal func thresholdSliderValueDidChange(sender :UISlider) {
-        threshold = thresholdSlider.value
-        thresholdLabel.text = String(format: "%.1f", threshold)
-        checkThreshold()
-    }
-    
+//     internal func thresholdSliderValueDidChange(sender :UISlider) {
+//         threshold = thresholdSlider.value
+//         thresholdLabel.text = String(format: "%.1f", threshold)
+//         checkThreshold()
+//     }
+
     internal func checkThreshold() {
         if (blightness <= threshold) {
-            getWildAndTough()
+            playTheMusic()
         } else {
             stopTheMusic()
         }
     }
-    
+
     internal func stopTheMusic() {
         if(audio!.playing) {
             audio!.stop()
         }
     }
-    
-    internal func getWildAndTough() {
+
+    internal func playTheMusic() {
         if(!audio!.playing) {
             audio!.play()
         }
     }
-    
+
     internal func getMediaItemBySongFreeword(songFreeword : NSString) -> MPMediaItem {
         let property: MPMediaPropertyPredicate = MPMediaPropertyPredicate(value: songFreeword, forProperty: MPMediaItemPropertyTitle)
         let query: MPMediaQuery = MPMediaQuery()
@@ -99,6 +101,6 @@ class ViewController: UIViewController {
         let items: [MPMediaItem] = query.items! as [MPMediaItem]
         return items[items.count - 1]
     }
-    
+
 }
 
