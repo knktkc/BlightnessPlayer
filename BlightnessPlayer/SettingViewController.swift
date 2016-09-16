@@ -33,13 +33,13 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-/*
-    @IBAction func pick(sender: AnyObject) {
+    
+    // SelectMusicボタン押下時のイベント。ミュージックライブラリへ飛ぶ
+    @IBAction func pickMusic(sender: UIButton) {
         let picker = MPMediaPickerController()
         picker.delegate = self
         picker.allowsPickingMultipleItems = false
         presentViewController(picker, animated: true, completion: nil)
-        
     }
     
     /// メディアアイテムピッカーでアイテムを選択完了したときに呼び出される
@@ -53,6 +53,6 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
     func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-*/
+
 }
 
