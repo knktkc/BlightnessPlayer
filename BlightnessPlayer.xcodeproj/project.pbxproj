@@ -14,6 +14,7 @@
 		10020F291D82760700F2E95E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10020F271D82760700F2E95E /* LaunchScreen.storyboard */; };
 		10020F341D82760700F2E95E /* BlightnessPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10020F331D82760700F2E95E /* BlightnessPlayerTests.swift */; };
 		10020F3F1D82760700F2E95E /* BlightnessPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10020F3E1D82760700F2E95E /* BlightnessPlayerUITests.swift */; };
+		10B412EC1D8BD1C2002E9EFD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B412EB1D8BD1C2002E9EFD /* MediaPlayer.framework */; };
 		10E538901D8BC59B000BC463 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5388F1D8BC59B000BC463 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		10020F3A1D82760700F2E95E /* BlightnessPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlightnessPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10020F3E1D82760700F2E95E /* BlightnessPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlightnessPlayerUITests.swift; sourceTree = "<group>"; };
 		10020F401D82760700F2E95E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10B412EB1D8BD1C2002E9EFD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		10E5388F1D8BC59B000BC463 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10B412EC1D8BD1C2002E9EFD /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 				10020F321D82760700F2E95E /* BlightnessPlayerTests */,
 				10020F3D1D82760700F2E95E /* BlightnessPlayerUITests */,
 				10020F1C1D82760700F2E95E /* Products */,
+				10B412EA1D8BD1C1002E9EFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +130,14 @@
 				10020F401D82760700F2E95E /* Info.plist */,
 			);
 			path = BlightnessPlayerUITests;
+			sourceTree = "<group>";
+		};
+		10B412EA1D8BD1C1002E9EFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10B412EB1D8BD1C2002E9EFD /* MediaPlayer.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,13 +208,17 @@
 				TargetAttributes = {
 					10020F1A1D82760700F2E95E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FKX54925F6;
+						LastSwiftMigration = 0800;
 					};
 					10020F2E1D82760700F2E95E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 10020F1A1D82760700F2E95E;
 					};
 					10020F391D82760700F2E95E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 10020F1A1D82760700F2E95E;
 					};
 				};
@@ -403,11 +419,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FKX54925F6;
 				INFOPLIST_FILE = BlightnessPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.garakuta-factory.BlightnessPlayer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -415,11 +433,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FKX54925F6;
 				INFOPLIST_FILE = BlightnessPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.garakuta-factory.BlightnessPlayer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -431,6 +451,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.garakuta-factory.BlightnessPlayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlightnessPlayer.app/BlightnessPlayer";
 			};
 			name = Debug;
@@ -443,6 +464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.garakuta-factory.BlightnessPlayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlightnessPlayer.app/BlightnessPlayer";
 			};
 			name = Release;
@@ -454,6 +476,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.garakuta-factory.BlightnessPlayerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = BlightnessPlayer;
 			};
 			name = Debug;
@@ -465,6 +488,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.garakuta-factory.BlightnessPlayerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = BlightnessPlayer;
 			};
 			name = Release;

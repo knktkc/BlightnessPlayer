@@ -83,13 +83,13 @@ class ViewController: UIViewController {
     }
 
     internal func stopTheMusic() {
-        if(audio!.playing) {
+        if(audio != nil && audio!.playing) {
             audio!.stop()
         }
     }
 
     internal func playTheMusic() {
-        if(!audio!.playing) {
+        if(audio != nil && !audio!.playing) {
             audio!.play()
         }
     }
