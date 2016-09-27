@@ -6,6 +6,7 @@
 //  Copyright © 2016年 knktkc. All rights reserved.
 import UIKit
 import MediaPlayer
+import AVFoundation
 
 class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
 
@@ -25,7 +26,6 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
         thresholdSlider.value = 0.1;
         
         player = MPMusicPlayerController.applicationMusicPlayer()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -36,10 +36,18 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
     
     // SelectMusicボタン押下時のイベント。ミュージックライブラリへ飛ぶ
     @IBAction func pickMusic(sender: UIButton) {
+        //MPMediaPickerControllerのインスタンス作成
         let picker = MPMediaPickerController()
+        //pickerのデリゲートを設定
         picker.delegate = self
-        picker.allowsPickingMultipleItems = false
-        presentViewController(picker, animated: true, completion: nil)
+        //複数選択を可にする（true/falseで設定）
+        picker.allowsPickingMultipleItems = true
+        //AssetURLが読み込めない音源は表示しない
+        picker.showsItemsWithProtectedAssets = false
+        //CloudItemsもAssetURLが読み込めないので表示しない
+        picker.showsCloudItems = false
+        //ピッカーを表示する
+        presentViewController(picker, animated:true, completion: nil)
     }
     
     /// メディアアイテムピッカーでアイテムを選択完了したときに呼び出される

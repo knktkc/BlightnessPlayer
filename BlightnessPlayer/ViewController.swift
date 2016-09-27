@@ -25,17 +25,22 @@ class ViewController: UIViewController {
         blightnessLabel.text = String(format: "%.1f", blightness)
         thresholdLabel.text = String(format: "%.1f", threshold)
         
+//        let currentStatus = MPMediaLibrary.authorizationStatus()
+//        thresholdLabel.text = currentStatus
+//        MPMediaLibrary.requestAuthorization { (status: MPMediaLibraryAuthorizationStatus) in
+            // 結果に応じた処理
+//        }
         // ”Cross The Line”って曲が端末に存在しないとエラーで落ちます
         // 好きな曲名に変更してください
         // TODO:予定では設定画面で選択した曲が流れます
-        let item: MPMediaItem = getMediaItemBySongFreeword("Cross The Line")
-        let url: NSURL = item.valueForProperty(MPMediaItemPropertyAssetURL) as! NSURL
-        
-        do {
-            audio = try AVAudioPlayer(contentsOfURL: url, fileTypeHint: nil)
-        } catch {
-            print(error)
-        }
+//         let item: MPMediaItem = getMediaItemBySongFreeword("Cross The Line")
+//         let url: NSURL = item.valueForProperty(MPMediaItemPropertyAssetURL) as! NSURL
+//        
+//         do {
+//             audio = try AVAudioPlayer(contentsOfURL: url, fileTypeHint: nil)
+//         } catch {
+//             print(error)
+//         }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
