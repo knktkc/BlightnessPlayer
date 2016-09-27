@@ -16,6 +16,7 @@
 		10020F3F1D82760700F2E95E /* BlightnessPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10020F3E1D82760700F2E95E /* BlightnessPlayerUITests.swift */; };
 		10B412EC1D8BD1C2002E9EFD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B412EB1D8BD1C2002E9EFD /* MediaPlayer.framework */; };
 		10E538901D8BC59B000BC463 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5388F1D8BC59B000BC463 /* SettingViewController.swift */; };
+		16DD34251D9A7AB10098AB5A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD34241D9A7AB10098AB5A /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 /* Begin PBXFileReference section */
 		10020F1B1D82760700F2E95E /* BlightnessPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlightnessPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10020F1E1D82760700F2E95E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10020F201D82760700F2E95E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		10020F201D82760700F2E95E /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		10020F231D82760700F2E95E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10020F251D82760700F2E95E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10020F281D82760700F2E95E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		10020F401D82760700F2E95E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10B412EB1D8BD1C2002E9EFD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		10E5388F1D8BC59B000BC463 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		16DD34241D9A7AB10098AB5A /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				10020F271D82760700F2E95E /* LaunchScreen.storyboard */,
 				10020F2A1D82760700F2E95E /* Info.plist */,
 				10E5388F1D8BC59B000BC463 /* SettingViewController.swift */,
+				16DD34241D9A7AB10098AB5A /* UIImageExtension.swift */,
 			);
 			path = BlightnessPlayer;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				10020F211D82760700F2E95E /* ViewController.swift in Sources */,
 				10020F1F1D82760700F2E95E /* AppDelegate.swift in Sources */,
 				10E538901D8BC59B000BC463 /* SettingViewController.swift in Sources */,
+				16DD34251D9A7AB10098AB5A /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
