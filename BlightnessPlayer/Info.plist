@@ -4,6 +4,8 @@
 <dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>音楽の再生のために必須です</string>
+	<key>NSCameraUsageDescription</key>
+	<string>輝度の取得のために必須です</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

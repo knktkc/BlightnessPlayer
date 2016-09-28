@@ -18,6 +18,8 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
     var audio: AVAudioPlayer?
     var player = MPMusicPlayerController()
     
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // スライダーの設定（最小値：0.1、最大値：0.9、初期値：0.1,000）
@@ -52,8 +54,14 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
     
     /// メディアアイテムピッカーでアイテムを選択完了したときに呼び出される
     func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-        player.setQueueWithItemCollection(mediaItemCollection)
-        player.play()
+
+        //空の配列を用意する
+        var titleArray : [NSString] = []
+        mediaItemCollection.items.forEach { (mediaItem) in
+            userDefaults.setURL(mediaItem.assetURL, forKey: mediaItem.title!)
+            titleArray.append(mediaItem.title!)
+        }
+        userDefaults.setObject(titleArray, forKey: "music")
         dismissViewControllerAnimated(true, completion: nil)
     }
 

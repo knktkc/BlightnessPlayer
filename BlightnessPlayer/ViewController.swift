@@ -10,46 +10,44 @@ import MediaPlayer
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    @IBOutlet var blightnessLabel: UILabel!
-    var blightness: Float = 0.0
+     let userDefaults = NSUserDefaults.standardUserDefaults()
+     var titleArray: [String] = []
+     
+     @IBOutlet var blightnessLabel: UILabel!
+     var blightness: Float = 0.0
      @IBOutlet weak var luminanceText: UITextField!
     
-    @IBOutlet var thresholdLabel: UILabel!
-    var threshold: Float = 0.1
+     @IBOutlet var thresholdLabel: UILabel!
+     var threshold: Float = 0.9
     
-    var audio: AVAudioPlayer?
+     var audio: AVAudioPlayer?
     
-    // カメラ関係
-    var cameraSession: AVCaptureSession?
-    var cameraDevice: AVCaptureDevice?
+     // カメラ関係
+     var cameraSession: AVCaptureSession?
+     var cameraDevice: AVCaptureDevice?
      var videoInput: AVCaptureDeviceInput?
-    var videoOutput: AVCaptureVideoDataOutput?
-    @IBOutlet weak var cameraImageView: UIImageView!
+     var videoOutput: AVCaptureVideoDataOutput?
+     @IBOutlet weak var cameraImageView: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+     override func viewDidLoad() {
+          super.viewDidLoad()
         
-        // 表示用のテキスト
-        blightnessLabel.text = String(format: "%.1f", blightness)
-        thresholdLabel.text = String(format: "%.1f", threshold)
-        
-//        let currentStatus = MPMediaLibrary.authorizationStatus()
-//        thresholdLabel.text = currentStatus
-//        MPMediaLibrary.requestAuthorization { (status: MPMediaLibraryAuthorizationStatus) in
-            // 結果に応じた処理
-//        }
-        // ”Cross The Line”って曲が端末に存在しないとエラーで落ちます
-        // 好きな曲名に変更してください
-        // TODO:予定では設定画面で選択した曲が流れます
-        let item: MPMediaItem = getMediaItemBySongFreeword("いけないボーダーライン")
-        let url: NSURL = item.valueForProperty(MPMediaItemPropertyAssetURL) as! NSURL
-        
-        do {
-            audio = try AVAudioPlayer(contentsOfURL: url, fileTypeHint: nil)
-        } catch {
-            print(error)
-        }
-        
+          // 表示用のテキスト
+          blightnessLabel.text = String(format: "%.1f", blightness)
+          thresholdLabel.text = String(format: "%.1f", threshold)
+          
+          titleArray = (userDefaults.objectForKey("music") as? [String])!
+
+          if !titleArray.isEmpty {
+               let url = userDefaults.URLForKey(titleArray[0])
+               if url != nil {
+                    do {
+                         audio = try AVAudioPlayer(contentsOfURL: url!, fileTypeHint: nil)
+                    } catch {
+                         print(error)
+                    }
+               }
+          }
         // Do any additional setup after loading the view, typically from a nib.
     }
      
@@ -77,11 +75,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                                                          name: UIScreenBrightnessDidChangeNotification,
                                                          object: nil)
         
-        // threshold = thresholdSlider.value
-        // thresholdLabel.text = String(format: "%.1f", threshold)
-        //
-        // thresholdSlider.addTarget(self, action: #selector(thresholdSliderValueDidChange(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        //
         checkThreshold()
     }
 
@@ -90,12 +83,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         blightnessLabel.text = String(format: "%.1f", blightness)
         checkThreshold()
     }
-    
-//     internal func thresholdSliderValueDidChange(sender :UISlider) {
-//         threshold = thresholdSlider.value
-//         thresholdLabel.text = String(format: "%.1f", threshold)
-//         checkThreshold()
-//     }
 
     internal func checkThreshold() {
         if (blightness <= threshold) {
