@@ -14,6 +14,9 @@
 		10020F291D82760700F2E95E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10020F271D82760700F2E95E /* LaunchScreen.storyboard */; };
 		10020F341D82760700F2E95E /* BlightnessPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10020F331D82760700F2E95E /* BlightnessPlayerTests.swift */; };
 		10020F3F1D82760700F2E95E /* BlightnessPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10020F3E1D82760700F2E95E /* BlightnessPlayerUITests.swift */; };
+		1093862C1D9E05B200F03E13 /* Button_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1093862B1D9E05B200F03E13 /* Button_Custom.swift */; };
+		1093862E1D9E088F00F03E13 /* View_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1093862D1D9E088F00F03E13 /* View_Custom.swift */; };
+		109386301D9E290D00F03E13 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1093862F1D9E290D00F03E13 /* PlayViewController.swift */; };
 		10B412EC1D8BD1C2002E9EFD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B412EB1D8BD1C2002E9EFD /* MediaPlayer.framework */; };
 		10E538901D8BC59B000BC463 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E5388F1D8BC59B000BC463 /* SettingViewController.swift */; };
 		16DD34251D9A7AB10098AB5A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD34241D9A7AB10098AB5A /* UIImageExtension.swift */; };
@@ -50,6 +53,9 @@
 		10020F3A1D82760700F2E95E /* BlightnessPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlightnessPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10020F3E1D82760700F2E95E /* BlightnessPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlightnessPlayerUITests.swift; sourceTree = "<group>"; };
 		10020F401D82760700F2E95E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1093862B1D9E05B200F03E13 /* Button_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button_Custom.swift; sourceTree = "<group>"; };
+		1093862D1D9E088F00F03E13 /* View_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View_Custom.swift; sourceTree = "<group>"; };
+		1093862F1D9E290D00F03E13 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		10B412EB1D8BD1C2002E9EFD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		10E5388F1D8BC59B000BC463 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		16DD34241D9A7AB10098AB5A /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 		10020F1D1D82760700F2E95E /* BlightnessPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				1093862A1D9E059300F03E13 /* UI */,
 				10020F1E1D82760700F2E95E /* AppDelegate.swift */,
 				10020F201D82760700F2E95E /* ViewController.swift */,
 				10020F221D82760700F2E95E /* Main.storyboard */,
@@ -113,6 +120,7 @@
 				10020F2A1D82760700F2E95E /* Info.plist */,
 				10E5388F1D8BC59B000BC463 /* SettingViewController.swift */,
 				16DD34241D9A7AB10098AB5A /* UIImageExtension.swift */,
+				1093862F1D9E290D00F03E13 /* PlayViewController.swift */,
 			);
 			path = BlightnessPlayer;
 			sourceTree = "<group>";
@@ -133,6 +141,15 @@
 				10020F401D82760700F2E95E /* Info.plist */,
 			);
 			path = BlightnessPlayerUITests;
+			sourceTree = "<group>";
+		};
+		1093862A1D9E059300F03E13 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1093862B1D9E05B200F03E13 /* Button_Custom.swift */,
+				1093862D1D9E088F00F03E13 /* View_Custom.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		10B412EA1D8BD1C1002E9EFD /* Frameworks */ = {
@@ -278,9 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1093862C1D9E05B200F03E13 /* Button_Custom.swift in Sources */,
+				1093862E1D9E088F00F03E13 /* View_Custom.swift in Sources */,
 				10020F211D82760700F2E95E /* ViewController.swift in Sources */,
 				10020F1F1D82760700F2E95E /* AppDelegate.swift in Sources */,
 				10E538901D8BC59B000BC463 /* SettingViewController.swift in Sources */,
+				109386301D9E290D00F03E13 /* PlayViewController.swift in Sources */,
 				16DD34251D9A7AB10098AB5A /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
