@@ -35,20 +35,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           // 表示用のテキスト
           blightnessLabel.text = String(format: "%.1f", blightness)
           thresholdLabel.text = String(format: "%.1f", threshold)
-          
-          titleArray = (userDefaults.objectForKey("music") as? [String])!
-
-          if !titleArray.isEmpty {
-               let url = userDefaults.URLForKey(titleArray[0])
-               if url != nil {
-                    do {
-                         audio = try AVAudioPlayer(contentsOfURL: url!, fileTypeHint: nil)
-                    } catch {
-                         print(error)
-                    }
-               }
-          }
-        // Do any additional setup after loading the view, typically from a nib.
     }
      
      override func viewWillAppear(animated: Bool) {

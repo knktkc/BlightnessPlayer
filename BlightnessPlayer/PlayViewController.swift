@@ -11,32 +11,70 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-class PlayViewController: UIViewController, MPMediaPickerControllerDelegate {
+class PlayViewController: UIViewController, AVAudioPlayerDelegate {
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
     var titleArray: [String] = []
     var audio: AVAudioPlayer?
+    
+    private var currentIndex: Int = 0
+    private var musicLength: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleArray = (userDefaults.objectForKey("music") as? [String])!
         
-        if !titleArray.isEmpty {
-            let url = userDefaults.URLForKey(titleArray[0])
-            if url != nil {
-                do {
-                    audio = try AVAudioPlayer(contentsOfURL: url!, fileTypeHint: nil)
-                    playTheMusic()
-                } catch {
-                    print(error)
-                }
+        musicLength = titleArray.count
+        let url = userDefaults.URLForKey(titleArray[currentIndex])
+        if url != nil {
+            do {
+                audio = try AVAudioPlayer(contentsOfURL: url!, fileTypeHint: nil)
+                audio?.numberOfLoops = 0
+                audio?.delegate = self
+                playTheMusic()
+            } catch {
+                print(error)
             }
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    /// アイテム末尾に到達したときに呼ばれる
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        let index = randomIndex()
+        var url: NSURL
+        if index != currentIndex {
+            currentIndex = index
+        } else {
+            currentIndex = nextIndex()
+        }
+        url = userDefaults.URLForKey(titleArray[currentIndex])!
+        do {
+            audio = try AVAudioPlayer(contentsOfURL: url, fileTypeHint: nil)
+            audio?.numberOfLoops = 0
+            audio?.delegate = self
+            playTheMusic()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func randomIndex()-> Int {
+        let retunIndex = Int(arc4random() % UInt32(musicLength))
+        return retunIndex
+    }
+
+    func nextIndex()-> Int {
+        // 範囲外になるなら最初の曲に戻る
+        if currentIndex >= titleArray.count - 1 {
+            return 0
+        } else {
+            return currentIndex + 1
+        }
     }
     
     internal func stopTheMusic() {
