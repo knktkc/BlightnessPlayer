@@ -103,14 +103,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             audio!.play()
         }
     }
-
-    internal func getMediaItemBySongFreeword(songFreeword : NSString) -> MPMediaItem {
-        let property: MPMediaPropertyPredicate = MPMediaPropertyPredicate(value: songFreeword, forProperty: MPMediaItemPropertyTitle)
-        let query: MPMediaQuery = MPMediaQuery()
-        query.addFilterPredicate(property)
-        let items: [MPMediaItem] = query.items! as [MPMediaItem]
-        return items[items.count - 1]
-    }
     
     func setupCamera() -> Bool {
         self.cameraSession = AVCaptureSession()
