@@ -35,20 +35,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           // 表示用のテキスト
           blightnessLabel.text = String(format: "%.1f", blightness)
           thresholdLabel.text = String(format: "%.1f", threshold)
-          
-          titleArray = (userDefaults.objectForKey("music") as? [String])!
-
-          if !titleArray.isEmpty {
-               let url = userDefaults.URLForKey(titleArray[0])
-               if url != nil {
-                    do {
-                         audio = try AVAudioPlayer(contentsOfURL: url!, fileTypeHint: nil)
-                    } catch {
-                         print(error)
-                    }
-               }
-          }
-        // Do any additional setup after loading the view, typically from a nib.
     }
      
      override func viewWillAppear(animated: Bool) {
@@ -102,14 +88,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         if(audio != nil && !audio!.playing) {
             audio!.play()
         }
-    }
-
-    internal func getMediaItemBySongFreeword(songFreeword : NSString) -> MPMediaItem {
-        let property: MPMediaPropertyPredicate = MPMediaPropertyPredicate(value: songFreeword, forProperty: MPMediaItemPropertyTitle)
-        let query: MPMediaQuery = MPMediaQuery()
-        query.addFilterPredicate(property)
-        let items: [MPMediaItem] = query.items! as [MPMediaItem]
-        return items[items.count - 1]
     }
     
     func setupCamera() -> Bool {

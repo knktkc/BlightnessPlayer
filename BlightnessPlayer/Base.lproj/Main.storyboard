@@ -18,8 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCK-J8-fap">
-                                <frame key="frameInset" minX="166" minY="101" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCK-J8-fap">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -32,8 +31,10 @@
                                     <segue destination="VK4-9U-aG1" kind="modal" id="L2b-Wi-6nR"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JQ-1x-w8P">
-                                <frame key="frameInset" minX="166" minY="141" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JQ-1x-w8P">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="c17-J3-lGL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -53,10 +54,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-Os-5Ez" customClass="Button_Custom" customModule="BlightnessPlayer" customModuleProvider="target">
-                                <frame key="frameInset" minX="137" minY="215" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-Os-5Ez" customClass="Button_Custom" customModule="BlightnessPlayer" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="iAR-4v-sly"/>
+                                    <constraint firstAttribute="height" constant="100" id="rM4-Lf-wHQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="PLAY">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,12 +89,14 @@
                             <constraint firstItem="HwX-QF-eGo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="EwP-rk-W3r"/>
                             <constraint firstItem="qCK-J8-fap" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I0Y-Wh-qTW"/>
                             <constraint firstAttribute="trailing" secondItem="d4p-C5-xIZ" secondAttribute="trailing" constant="20" id="Nhj-B2-wQb"/>
+                            <constraint firstItem="KF4-Os-5Ez" firstAttribute="top" secondItem="7JQ-1x-w8P" secondAttribute="bottom" constant="45.5" id="YGr-wP-EXD"/>
+                            <constraint firstItem="7JQ-1x-w8P" firstAttribute="top" secondItem="qCK-J8-fap" secondAttribute="bottom" constant="19.5" id="ZQJ-3U-bpg"/>
+                            <constraint firstItem="qCK-J8-fap" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="81" id="etW-m6-cZ0"/>
                             <constraint firstItem="FnM-zn-dIA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g3z-MC-LQ3"/>
+                            <constraint firstItem="KF4-Os-5Ez" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmn-oZ-fXR"/>
                             <constraint firstItem="d4p-C5-xIZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="iFS-el-U2b"/>
-                            <constraint firstItem="FnM-zn-dIA" firstAttribute="top" secondItem="7JQ-1x-w8P" secondAttribute="bottom" constant="20" id="mkL-nS-znj"/>
                             <constraint firstItem="HwX-QF-eGo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="pIN-2Z-A7L"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FnM-zn-dIA" secondAttribute="bottom" constant="5" id="rf3-ht-acO"/>
-                            <constraint firstItem="7JQ-1x-w8P" firstAttribute="top" secondItem="qCK-J8-fap" secondAttribute="bottom" constant="20" id="vnR-ie-xqE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -117,12 +122,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="SOx-L5-b1j" appends="YES" id="dT0-P7-3Td"/>
+                        </connections>
                     </view>
-                    <connections>
-                        <outlet property="playView" destination="dnA-hH-OxM" id="bo1-V2-r81"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6F4-YE-D4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SOx-L5-b1j">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="modal" id="TPC-fP-F4W"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="36" y="819"/>
         </scene>
@@ -148,14 +159,16 @@
                                     <segue destination="BYZ-38-t0r" kind="modal" id="1gi-9w-EJd"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.90000000000000002" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uyi-Ys-R54">
-                                <frame key="frameInset" minX="35" minY="500" width="300" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.90000000000000002" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uyi-Ys-R54">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gUg-qB-sX7"/>
+                                </constraints>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbq-8q-f8a" customClass="Button_Custom" customModule="BlightnessPlayer" customModuleProvider="target">
-                                <frame key="frameInset" minX="37" minY="586" width="300" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbq-8q-f8a" customClass="Button_Custom" customModule="BlightnessPlayer" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RvC-yt-2i2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Select Music">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -180,6 +193,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zhh-RR-wlz" firstAttribute="top" secondItem="Rbq-8q-f8a" secondAttribute="bottom" constant="31" id="2Qp-Sw-9Dj"/>
+                            <constraint firstAttribute="trailing" secondItem="Rbq-8q-f8a" secondAttribute="trailing" constant="38" id="8oG-5y-hSc"/>
+                            <constraint firstItem="Rbq-8q-f8a" firstAttribute="leading" secondItem="8tl-Bc-AA7" secondAttribute="leading" constant="37" id="96H-69-6wo"/>
+                            <constraint firstAttribute="trailing" secondItem="uyi-Ys-R54" secondAttribute="trailing" constant="40" id="Ddg-4r-dw6"/>
+                            <constraint firstItem="uyi-Ys-R54" firstAttribute="leading" secondItem="8tl-Bc-AA7" secondAttribute="leading" constant="39" id="flo-7M-CwP"/>
+                            <constraint firstItem="Rbq-8q-f8a" firstAttribute="top" secondItem="uyi-Ys-R54" secondAttribute="bottom" constant="56" id="m87-ra-JUg"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="thresholdSlider" destination="uyi-Ys-R54" id="2qb-ah-ZYi"/>
@@ -190,4 +211,7 @@
             <point key="canvasLocation" x="797.60000000000002" y="37.331334332833585"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1gi-9w-EJd"/>
+    </inferredMetricsTieBreakers>
 </document>
