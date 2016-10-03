@@ -155,7 +155,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           // キャプチャしたsampleBufferからUIImageを作成
           let image:UIImage = self.captureImage(sampleBuffer)
           
-          let color = image.getPixelColor(CGPointMake(0, 0))
+          // 画像を1*1サイズにリサイズする(全画面を輝度計算すると重いので)
+          let resizedSize = CGSize(width: 1, height: 1)
+          UIGraphicsBeginImageContext(resizedSize)
+          image.drawInRect(CGRect(x: 0, y: 0, width: 1, height: 1))
+          let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+          
+          let color = resizedImage!.getPixelColor(CGPointMake(0, 0))
           let luminance = ( 0.298912 * color.0 + 0.586611 * color.1 + 0.114478 * color.2 );    // rgb->輝度
           
           // カメラの画像を画面に表示、輝度表示更新
