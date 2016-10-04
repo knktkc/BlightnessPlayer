@@ -110,6 +110,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
      
         do {
+            // カメラの露出がオートで変更されない設定にする
+            try cameraDevice?.lockForConfiguration()
+            cameraDevice?.exposureMode = .Locked
+            cameraDevice?.unlockForConfiguration()
+        } catch {
+            print("camera exposure cant lock")
+        }
+     
+        do {
             self.videoInput = try AVCaptureDeviceInput(device: cameraDevice) as AVCaptureDeviceInput
         } catch {
             print("camera input can not find")
