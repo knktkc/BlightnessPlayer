@@ -30,6 +30,11 @@ class PlayViewController: UIViewController, AVAudioPlayerDelegate {
         }
         
         titleArray = tempTitleArray
+        let image12_1:UIImage = UIImage(named:"images/12-1.png")!
+        
+        animationImageView.image = image12_1
+        
+        titleArray = (userDefaults.objectForKey("music") as? [String])!
         
         musicLength = titleArray.count
         let url = userDefaults.URLForKey(titleArray[currentIndex])
