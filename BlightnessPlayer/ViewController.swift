@@ -18,7 +18,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
      @IBOutlet weak var luminanceText: UITextField!
     
      @IBOutlet var thresholdLabel: UILabel!
-     var threshold: Float = 0.9
+     var threshold: Float = 0.2
     
      var audio: AVAudioPlayer?
     
@@ -51,11 +51,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         blightness = Float(UIScreen.mainScreen().brightness)
         blightnessLabel.text = String(format: "%.1f", blightness)
         
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(brightnessDidChange(_:)),
-                                                         name: UIScreenBrightnessDidChangeNotification,
-                                                         object: nil)
-        
+//        NSNotificationCenter.defaultCenter().addObserver(self,
+//                                                         selector: #selector(brightnessDidChange(_:)),
+//                                                         name: UIScreenBrightnessDidChangeNotification,
+//                                                         object: nil)
+     
         checkThreshold()
     }
 
@@ -174,6 +174,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                }
           }
           luminance = luminance / CGFloat(Int(newWidth) * Int(newHeight))
+          self.blightness = Float(luminance)
+          checkThreshold()
           
           // カメラの画像を画面に表示、輝度表示更新
           dispatch_async(dispatch_get_main_queue()) {
