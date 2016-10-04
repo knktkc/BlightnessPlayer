@@ -23,7 +23,11 @@ class PlayViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleArray = (userDefaults.objectForKey("music") as? [String])!
+        guard let tempTitleArray = (userDefaults.objectForKey("music") as? [String]) else {
+            return
+        }
+        
+        titleArray = tempTitleArray
         
         musicLength = titleArray.count
         let url = userDefaults.URLForKey(titleArray[currentIndex])
