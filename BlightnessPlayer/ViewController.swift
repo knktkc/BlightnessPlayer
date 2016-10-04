@@ -35,17 +35,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           // 表示用のテキスト
           blightnessLabel.text = String(format: "%.1f", blightness)
           thresholdLabel.text = String(format: "%.1f", threshold)
-    }
-     
-     override func viewWillAppear(animated: Bool) {
-          super.viewWillAppear(animated)
           
           // カメラセットアップとプレビュー表示
           if setupCamera() {
                self.cameraSession?.startRunning()
           }
-     }
-
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -164,14 +159,21 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           // キャプチャしたsampleBufferからUIImageを作成
           let image:UIImage = self.captureImage(sampleBuffer)
           
-          // 画像を1*1サイズにリサイズする(全画面を輝度計算すると重いので)
-          let resizedSize = CGSize(width: 1, height: 1)
+          // 画像サイズをアスペクト比を保ったまま縮小する(輝度サンプル数をある程度確保し、かつ重くない程度)
+          let newWidth: CGFloat = 50
+          let newHeight = image.size.height / image.size.width * newWidth
+          let resizedSize = CGSize(width: newWidth, height: newHeight)
           UIGraphicsBeginImageContext(resizedSize)
-          image.drawInRect(CGRect(x: 0, y: 0, width: 1, height: 1))
+          image.drawInRect(CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
           let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-          
-          let color = resizedImage!.getPixelColor(CGPointMake(0, 0))
-          let luminance = ( 0.298912 * color.0 + 0.586611 * color.1 + 0.114478 * color.2 );    // rgb->輝度
+          var luminance: CGFloat = 0.0
+          for x in 0..<Int(newWidth) {
+               for y in 0..<Int(newHeight) {
+                    let color = resizedImage!.getPixelColor(CGPointMake(CGFloat(x), CGFloat(y)))
+                    luminance += (0.298912 * color.0 + 0.586611 * color.1 + 0.114478 * color.2)
+               }
+          }
+          luminance = luminance / CGFloat(Int(newWidth) * Int(newHeight))
           
           // カメラの画像を画面に表示、輝度表示更新
           dispatch_async(dispatch_get_main_queue()) {
