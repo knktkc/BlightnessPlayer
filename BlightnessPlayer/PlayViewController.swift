@@ -20,6 +20,8 @@ class PlayViewController: UIViewController, AVAudioPlayerDelegate {
     private var currentIndex: Int = 0
     private var musicLength: Int = 0
 
+    @IBOutlet weak var animationImageView: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,5 +93,9 @@ class PlayViewController: UIViewController, AVAudioPlayerDelegate {
         if(audio != nil && !audio!.playing) {
             audio!.play()
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        stopTheMusic()
     }
 }
