@@ -45,15 +45,6 @@
                                     <constraint firstAttribute="width" constant="254" id="uBd-kJ-WdA"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HwX-QF-eGo">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0nR-CB-vio"/>
-                                    <constraint firstAttribute="width" constant="100" id="fx4-30-8Kn"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-Os-5Ez" customClass="Button_Custom" customModule="BlightnessPlayer" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -86,7 +77,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7JQ-1x-w8P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E4h-Oy-qDz"/>
-                            <constraint firstItem="HwX-QF-eGo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="EwP-rk-W3r"/>
                             <constraint firstItem="qCK-J8-fap" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I0Y-Wh-qTW"/>
                             <constraint firstAttribute="trailing" secondItem="d4p-C5-xIZ" secondAttribute="trailing" constant="20" id="Nhj-B2-wQb"/>
                             <constraint firstItem="KF4-Os-5Ez" firstAttribute="top" secondItem="7JQ-1x-w8P" secondAttribute="bottom" constant="45.5" id="YGr-wP-EXD"/>
@@ -95,14 +85,12 @@
                             <constraint firstItem="FnM-zn-dIA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g3z-MC-LQ3"/>
                             <constraint firstItem="KF4-Os-5Ez" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmn-oZ-fXR"/>
                             <constraint firstItem="d4p-C5-xIZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="iFS-el-U2b"/>
-                            <constraint firstItem="HwX-QF-eGo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="pIN-2Z-A7L"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FnM-zn-dIA" secondAttribute="bottom" constant="5" id="rf3-ht-acO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="blightnessLabel" destination="qCK-J8-fap" id="Zuk-af-Ofb"/>
                         <outlet property="cameraImageView" destination="FnM-zn-dIA" id="iuL-Eo-ed2"/>
-                        <outlet property="luminanceText" destination="HwX-QF-eGo" id="Fm8-27-FCJ"/>
                         <outlet property="thresholdLabel" destination="7JQ-1x-w8P" id="caC-7P-JaZ"/>
                     </connections>
                 </viewController>
