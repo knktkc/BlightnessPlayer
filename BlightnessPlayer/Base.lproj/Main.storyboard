@@ -45,15 +45,6 @@
                                     <constraint firstAttribute="width" constant="254" id="uBd-kJ-WdA"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HwX-QF-eGo">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0nR-CB-vio"/>
-                                    <constraint firstAttribute="width" constant="100" id="fx4-30-8Kn"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-Os-5Ez" customClass="Button_Custom" customModule="BlightnessPlayer" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -86,7 +77,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7JQ-1x-w8P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E4h-Oy-qDz"/>
-                            <constraint firstItem="HwX-QF-eGo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="EwP-rk-W3r"/>
                             <constraint firstItem="qCK-J8-fap" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I0Y-Wh-qTW"/>
                             <constraint firstAttribute="trailing" secondItem="d4p-C5-xIZ" secondAttribute="trailing" constant="20" id="Nhj-B2-wQb"/>
                             <constraint firstItem="KF4-Os-5Ez" firstAttribute="top" secondItem="7JQ-1x-w8P" secondAttribute="bottom" constant="45.5" id="YGr-wP-EXD"/>
@@ -95,14 +85,12 @@
                             <constraint firstItem="FnM-zn-dIA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g3z-MC-LQ3"/>
                             <constraint firstItem="KF4-Os-5Ez" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmn-oZ-fXR"/>
                             <constraint firstItem="d4p-C5-xIZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="iFS-el-U2b"/>
-                            <constraint firstItem="HwX-QF-eGo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="pIN-2Z-A7L"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FnM-zn-dIA" secondAttribute="bottom" constant="5" id="rf3-ht-acO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="blightnessLabel" destination="qCK-J8-fap" id="Zuk-af-Ofb"/>
                         <outlet property="cameraImageView" destination="FnM-zn-dIA" id="iuL-Eo-ed2"/>
-                        <outlet property="luminanceText" destination="HwX-QF-eGo" id="Fm8-27-FCJ"/>
                         <outlet property="thresholdLabel" destination="7JQ-1x-w8P" id="caC-7P-JaZ"/>
                     </connections>
                 </viewController>
@@ -121,12 +109,24 @@
                     <view key="view" contentMode="scaleToFill" id="dnA-hH-OxM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tS1-QR-TJf"/>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tS1-QR-TJf" secondAttribute="trailing" id="3OK-EL-or5"/>
+                            <constraint firstItem="tS1-QR-TJf" firstAttribute="leading" secondItem="dnA-hH-OxM" secondAttribute="leading" id="8BQ-jD-rQ4"/>
+                            <constraint firstItem="8nx-7a-e5t" firstAttribute="top" secondItem="tS1-QR-TJf" secondAttribute="bottom" id="Vfv-Zc-Ygz"/>
+                            <constraint firstItem="tS1-QR-TJf" firstAttribute="top" secondItem="pcx-ah-3yF" secondAttribute="bottom" id="foo-f8-xFU"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="SOx-L5-b1j" appends="YES" id="dT0-P7-3Td"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="animationImageView" destination="tS1-QR-TJf" id="YjZ-yb-H46"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6F4-YE-D4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="SOx-L5-b1j">
@@ -212,6 +212,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1gi-9w-EJd"/>
+        <segue reference="TPC-fP-F4W"/>
     </inferredMetricsTieBreakers>
 </document>

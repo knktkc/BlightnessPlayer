@@ -8,19 +8,18 @@
 import UIKit
 import MediaPlayer
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVAudioPlayerDelegate {
     
      let userDefaults = NSUserDefaults.standardUserDefaults()
-     var titleArray: [String] = []
      
      @IBOutlet var blightnessLabel: UILabel!
      var blightness: Float = 0.0
-     @IBOutlet weak var luminanceText: UITextField!
     
      @IBOutlet var thresholdLabel: UILabel!
-     var threshold: Float = 0.2
-    
-     var audio: AVAudioPlayer?
+     var threshold: Float = 0.0
+     
+     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+     var audioController: AudioController?
     
      // カメラ関係
      var cameraSession: AVCaptureSession?
@@ -31,16 +30,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
      override func viewDidLoad() {
           super.viewDidLoad()
-        
+          
           // 表示用のテキスト
-          blightnessLabel.text = String(format: "%.1f", blightness)
-          thresholdLabel.text = String(format: "%.1f", threshold)
+          blightnessLabel.text = "0"
+          thresholdLabel.text = "0"
           
           // カメラセットアップとプレビュー表示
           if setupCamera() {
                self.cameraSession?.startRunning()
           }
-    }
+          
+          if let tempThreshold: Float = userDefaults.floatForKey("threshold") {
+               thresholdLabel.text = String(format: "%.1f", tempThreshold)
+               threshold = tempThreshold
+          }
+          
+          self.audioController = appDelegate.audioController
+     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,8 +61,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //                                                         selector: #selector(brightnessDidChange(_:)),
 //                                                         name: UIScreenBrightnessDidChangeNotification,
 //                                                         object: nil)
-     
-        checkThreshold()
+
     }
 
     internal func brightnessDidChange(notification: NSNotification) {
@@ -67,21 +72,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     internal func checkThreshold() {
         if (blightness <= threshold) {
-            playTheMusic()
+            self.audioController!.playTheMusic()
         } else {
-            stopTheMusic()
-        }
-    }
-
-    internal func stopTheMusic() {
-        if(audio != nil && audio!.playing) {
-            audio!.stop()
-        }
-    }
-
-    internal func playTheMusic() {
-        if(audio != nil && !audio!.playing) {
-            audio!.play()
+            self.audioController!.stopTheMusic()
         }
     }
     
@@ -180,7 +173,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           // カメラの画像を画面に表示、輝度表示更新
           dispatch_async(dispatch_get_main_queue()) {
                self.cameraImageView.image = image
-               self.luminanceText.text = luminance.description
+//               self.luminanceText.text = luminance.description
+//               self.blightnessLabel.text = luminance.description
+               self.blightnessLabel.text = String(format: "%.1f", luminance)
           }
      }
      

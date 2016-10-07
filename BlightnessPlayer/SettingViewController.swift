@@ -27,10 +27,18 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
         thresholdSlider.maximumValue = 0.9;
         thresholdSlider.value = 0.1;
         
+        if let tempThreshold: Float = userDefaults.floatForKey("threshold") {
+            thresholdSlider.value = tempThreshold
+        }
+
         player = MPMusicPlayerController.applicationMusicPlayer()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        thresholdSlider.addTarget(self, action: #selector(thresholdSliderValueDidChange(_:)), forControlEvents: UIControlEvents.ValueChanged)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,5 +78,9 @@ class SettingViewController: UIViewController, MPMediaPickerControllerDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    internal func thresholdSliderValueDidChange(sender :UISlider) {
+        threshold = thresholdSlider.value
+        userDefaults.setFloat(threshold, forKey: "threshold")
+    }
 }
 
