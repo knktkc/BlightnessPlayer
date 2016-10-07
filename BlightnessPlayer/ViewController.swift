@@ -11,7 +11,6 @@ import MediaPlayer
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVAudioPlayerDelegate {
     
      let userDefaults = NSUserDefaults.standardUserDefaults()
-     var titleArray: [String] = []
      
      @IBOutlet var blightnessLabel: UILabel!
      var blightness: Float = 0.0
@@ -19,10 +18,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
      @IBOutlet var thresholdLabel: UILabel!
      var threshold: Float = 0.0
      
-     private var currentIndex: Int = 0
-     private var musicLength: Int = 0
-
-     var audio: AVAudioPlayer?
+     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+     var audioController: AudioController?
     
      // カメラ関係
      var cameraSession: AVCaptureSession?
@@ -47,6 +44,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                thresholdLabel.text = String(format: "%.1f", tempThreshold)
                threshold = tempThreshold
           }
+          
+          self.audioController = appDelegate.audioController
      }
     
     override func didReceiveMemoryWarning() {
@@ -63,24 +62,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //                                                         name: UIScreenBrightnessDidChangeNotification,
 //                                                         object: nil)
 
-     guard let tempTitleArray = (userDefaults.objectForKey("music") as? [String]) else {
-          return
-     }
-     
-     titleArray = tempTitleArray
-     musicLength = titleArray.count
-     let url = userDefaults.URLForKey(titleArray[currentIndex])
-     if url != nil {
-          do {
-               audio = try AVAudioPlayer(contentsOfURL: url!, fileTypeHint: nil)
-               audio?.numberOfLoops = 0
-               audio?.delegate = self
-          } catch {
-               print(error)
-          }
-     }
-
-        checkThreshold()
     }
 
     internal func brightnessDidChange(notification: NSNotification) {
@@ -91,56 +72,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     internal func checkThreshold() {
         if (blightness <= threshold) {
-            playTheMusic()
+            self.audioController!.playTheMusic()
         } else {
-            stopTheMusic()
+            self.audioController!.stopTheMusic()
         }
     }
-     /// アイテム末尾に到達したときに呼ばれる
-     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-          let index = randomIndex()
-          var url: NSURL
-          if index != currentIndex {
-               currentIndex = index
-          } else {
-               currentIndex = nextIndex()
-          }
-          url = userDefaults.URLForKey(titleArray[currentIndex])!
-          do {
-               audio = try AVAudioPlayer(contentsOfURL: url, fileTypeHint: nil)
-               audio?.numberOfLoops = 0
-               audio?.delegate = self
-               playTheMusic()
-          } catch {
-               print(error)
-          }
-     }
-     
-     func randomIndex()-> Int {
-          let retunIndex = Int(arc4random() % UInt32(musicLength))
-          return retunIndex
-     }
-     
-     func nextIndex()-> Int {
-          // 範囲外になるなら最初の曲に戻る
-          if currentIndex >= titleArray.count - 1 {
-               return 0
-          } else {
-               return currentIndex + 1
-          }
-     }
-     
-     internal func stopTheMusic() {
-          if(audio != nil && audio!.playing) {
-               audio!.stop()
-          }
-     }
-     
-     internal func playTheMusic() {
-          if(audio != nil && !audio!.playing) {
-               audio!.play()
-          }
-     }
     
     func setupCamera() -> Bool {
         self.cameraSession = AVCaptureSession()

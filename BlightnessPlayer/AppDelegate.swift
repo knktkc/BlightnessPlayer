@@ -12,9 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    // audioを共通にしたい
+    var audioController: AudioController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.audioController = AudioController()
         // Sleepしないように
         UIApplication.sharedApplication().idleTimerDisabled = true
         // Override point for customization after application launch.
