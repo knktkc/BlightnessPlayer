@@ -238,7 +238,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           dispatch_async(dispatch_get_main_queue()) {
                self.cameraImageView.image = image
 //               self.luminanceText.text = luminance.description
-               self.blightnessLabel.text = luminance.description
+//               self.blightnessLabel.text = luminance.description
+               self.blightnessLabel.text = String(format: "%.1f", luminance)
           }
      }
      
