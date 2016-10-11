@@ -20,6 +20,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
      
      var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
      var audioController: AudioController?
+     
+     var isAnimating: Bool = false
     
      // カメラ関係
      var cameraSession: AVCaptureSession?
@@ -73,8 +75,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     internal func checkThreshold() {
         if (blightness <= threshold) {
             self.audioController!.playTheMusic()
+            self.startAnimation()
         } else {
             self.audioController!.stopTheMusic()
+            self.stopAnimation()
         }
     }
     
@@ -168,13 +172,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           }
           luminance = luminance / CGFloat(Int(newWidth) * Int(newHeight))
           self.blightness = Float(luminance)
-          checkThreshold()
           
           // カメラの画像を画面に表示、輝度表示更新
           dispatch_async(dispatch_get_main_queue()) {
+               self.checkThreshold()    // ImageViewControllerの変更を通知するのでメインスレッドで起動すること
                self.cameraImageView.image = image
-//               self.luminanceText.text = luminance.description
-//               self.blightnessLabel.text = luminance.description
                self.blightnessLabel.text = String(format: "%.1f", luminance)
           }
      }
@@ -203,6 +205,37 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           let resultImage = UIImage(CGImage: imageRef, scale: 1.0, orientation: UIImageOrientation.Right)
           
           return resultImage
+     }
+     
+     // PlayViewControllerのアニメーションを開始する
+     func startAnimation() {
+          // 最前面のViewControllerを取得
+          var topViewcon = UIApplication.sharedApplication().keyWindow?.rootViewController
+          while ((topViewcon?.presentedViewController) != nil) {
+               topViewcon = topViewcon?.presentedViewController
+          }
+          
+          if topViewcon is PlayViewController && isAnimating == false {
+               let playViewcon = topViewcon as! PlayViewController
+               playViewcon.animationImageView.startAnimating()
+               isAnimating = true
+          }
+          
+     }
+     
+     // PlayViewControllerのアニメーションを止める
+     func stopAnimation() {
+          // 最前面のViewControllerを取得
+          var topViewcon = UIApplication.sharedApplication().keyWindow?.rootViewController
+          while ((topViewcon?.presentedViewController) != nil) {
+               topViewcon = topViewcon?.presentedViewController
+          }
+          
+          if topViewcon is PlayViewController {
+               let playViewcon = topViewcon as! PlayViewController
+               playViewcon.animationImageView.stopAnimating()
+               isAnimating = false
+          }
      }
 
 }
