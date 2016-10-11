@@ -23,7 +23,7 @@ class PlayViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
 
         // アニメーション用の画像
-        let image12_1 = UIImage(named:"images/12-1_1.png")!
+        let image12_1 = UIImage(named:"images/12-1.png")!
 //        let image12_2 = UIImage(named:"images/12-2.png")!
         let image13_1 = UIImage(named:"images/13-1.png")!
 //        let image13_2 = UIImage(named:"images/13-2.png")!
@@ -45,14 +45,6 @@ class PlayViewController: UIViewController, AVAudioPlayerDelegate {
         // 10回繰り返し
         animationImageView.animationRepeatCount = 10
         
-    }
-    
-    // 画面が表示されたあとのイベントハンドラ
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // アニメーションを開始
-        animationImageView.startAnimating()
     }
     
     override func didReceiveMemoryWarning() {
