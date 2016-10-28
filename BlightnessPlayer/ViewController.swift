@@ -29,6 +29,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
      var videoInput: AVCaptureDeviceInput?
      var videoOutput: AVCaptureVideoDataOutput?
      @IBOutlet weak var cameraImageView: UIImageView!
+     var luminanceArray: [Float] = []
+     let maxKeepLuminance: Float = 300
     
      override func viewDidLoad() {
           super.viewDidLoad()
@@ -173,6 +175,24 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
           luminance = luminance / CGFloat(Int(newWidth) * Int(newHeight))
           self.blightness = Float(luminance)
           
+          // 輝度に敏感に反応するのを防ぐため30フレームの平均値を取る処理
+          if self.luminanceArray.count > Int(maxKeepLuminance) {
+               self.luminanceArray.removeFirst()
+               self.luminanceArray.append(self.blightness)
+               var totalLuminance: Float = 0
+               for lumi in self.luminanceArray {
+                    totalLuminance += lumi
+               }
+               self.blightness = totalLuminance / maxKeepLuminance
+          } else {
+               self.luminanceArray.append(self.blightness)
+               var totalLuminance: Float = 0
+               for lumi in self.luminanceArray {
+                    totalLuminance += lumi
+               }
+               self.blightness = totalLuminance / Float(self.luminanceArray.count)
+          }
+          
           // カメラの画像を画面に表示、輝度表示更新
           dispatch_async(dispatch_get_main_queue()) {
                self.checkThreshold()    // ImageViewControllerの変更を通知するのでメインスレッドで起動すること
@@ -220,7 +240,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                playViewcon.animationImageView.startAnimating()
                isAnimating = true
           }
-          
      }
      
      // PlayViewControllerのアニメーションを止める
